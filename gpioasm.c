@@ -6,12 +6,12 @@
 #endif
 
 void gpioasm_stop(gpioasm_engine_t *engine) {
+    engine->is_running = false;
     if(engine->init.timer_handler == NULL){
         GPIOASM_LOG_ERROR("timer_handler not set in init\n");
         return;
     }
     engine->init.timer_handler(0, false);
-    engine->is_running = false;
 }
 
 void gpioasm_reset(gpioasm_engine_t *engine) {
@@ -427,6 +427,7 @@ void gpioasm_buffer_next_packet(gpioasm_engine_t *engine) {
 
         if(gpioasm_read_has_reached_end(engine)){
             GPIOASM_LOG_DEBUG("instructions end.\n");
+            gpioasm_stop(engine);
             break;
         }
     } while (should_run_next);
@@ -438,6 +439,7 @@ void gpioasm_step(gpioasm_engine_t *engine) {
 
 void gpioasm_handle_timer_timeout(gpioasm_engine_t *engine) {
     if (gpioasm_read_has_reached_end(engine)) {
+        gpioasm_stop(engine);
         return;
     }
     gpioasm_step(engine);

@@ -96,6 +96,5 @@ uint8_t gpioasm_is_running(gpioasm_engine_t *engine);
 GPIOASM_PACKET_PUSH_RESULT gpioasm_push_packet(gpioasm_engine_t *engine, uint8_t *data, uint32_t length);
 void gpioasm_handle_digital_input_update(gpioasm_engine_t *engine, uint32_t index, bool is_high);
 void gpioasm_handle_timer_timeout(gpioasm_engine_t *engine);
-bool gpioasm_read_has_reached_end(gpioasm_engine_t *engine);
 
 #endif
