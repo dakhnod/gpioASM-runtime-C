@@ -1,5 +1,5 @@
 # gpioASM runtime for C/C++
-Platform agnostic runtime for gpioASM bytecode
+Platform agnostic runtime for [gpioASM bytecode](https://github.com/dakhnod/gpioASM/tree/main)
 
 ## Running the example
 To test the example on any system with a compiler, just run
