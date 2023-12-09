@@ -160,7 +160,7 @@ void gpioasm_execute_instruction_sleep_ms(gpioasm_engine_t *engine) {
         GPIOASM_LOG_ERROR("timer_handler not set in init\n");
         return;
     }
-    engine->init.timer_handler(delay, true);
+    engine->init.timer_handler(engine, delay, true);
 }
 
 bool gpioasm_filter_matches_digital_input_pins(gpioasm_engine_t *engine, uint8_t *pin_filter_data, uint32_t pin_filter_length, bool match_all) {
@@ -254,7 +254,7 @@ void gpioasm_execute_instruction_sleep_match_timeout(gpioasm_engine_t *engine, b
     }
 
     GPIOASM_LOG_DEBUG("instruction sleep timeout: %i\n", timeout);
-    engine->init.timer_handler(timeout, true);
+    engine->init.timer_handler(engine, timeout, true);
 }
 
 void gpioasm_handle_digital_input_update(gpioasm_engine_t *engine, uint32_t index, bool is_high) {
@@ -283,7 +283,7 @@ void gpioasm_handle_digital_input_update(gpioasm_engine_t *engine, uint32_t inde
 
     if (execute_next_instruction) {
         if (engine->sleep_condition == SLEEP_MATCH_PINS_ALL_TIMEOUT || engine->sleep_condition == SLEEP_MATCH_PINS_ANY_TIMEOUT) {
-            engine->init.timer_handler(0, false);
+            engine->init.timer_handler(engine, 0, false);
         }
 
         engine->sleep_condition = SLEEP_NO_CONDITION;
