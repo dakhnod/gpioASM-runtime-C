@@ -11,7 +11,7 @@ void gpioasm_stop(gpioasm_engine_t *engine) {
         GPIOASM_LOG_ERROR("timer_handler not set in init\n");
         return;
     }
-    engine->init.timer_handler(0, false);
+    engine->init.timer_handler(engine, 0, false);
 }
 
 void gpioasm_reset(gpioasm_engine_t *engine) {

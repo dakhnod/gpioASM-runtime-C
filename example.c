@@ -21,7 +21,7 @@ bool get_digital_input_pin(uint32_t index){
     return false;
 }
 
-void set_timer(uint64_t timeout, bool start){
+void set_timer(void *engine_ptr, uint64_t timeout, bool start){
     if(start){
         printf("setting timer for %llums\n", timeout);
     }else{
