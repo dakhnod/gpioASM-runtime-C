@@ -7,6 +7,7 @@
 
 void gpioasm_stop(gpioasm_engine_t *engine) {
     engine->is_running = false;
+    engine->sleep_condition = SLEEP_NO_CONDITION;
     if(engine->init.timer_handler == NULL){
         GPIOASM_LOG_ERROR("timer_handler not set in init\n");
         return;
