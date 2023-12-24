@@ -112,8 +112,7 @@ uint8_t gpioasm_decode_pin_bits(uint8_t *pin_data, uint32_t pin_data_length, uin
 }
 
 uint8_t gpioasm_get_argument_count(gpioasm_engine_t *engine){
-    uint8_t instruction = engine->instruction_buffer[engine->instruction_index - 1];
-    return instruction & 0b00001111;
+    return engine->current_instruction & 0b00001111;
 }
 
 void gpioasm_execute_instruction_write_digital_outputs(gpioasm_engine_t *engine) {
@@ -425,8 +424,8 @@ void gpioasm_execute_instruction(gpioasm_engine_t *engine, uint8_t instruction, 
 void gpioasm_buffer_next_packet(gpioasm_engine_t *engine) {
     bool should_run_next;
     do {
-        uint8_t instruction = gpioasm_read_instruction(engine);
-        gpioasm_execute_instruction(engine, instruction, &should_run_next);
+        engine->current_instruction = gpioasm_read_instruction(engine);
+        gpioasm_execute_instruction(engine, engine->current_instruction, &should_run_next);
 
         if(gpioasm_read_has_reached_end(engine)){
             GPIOASM_LOG_DEBUG("instructions end.\n");

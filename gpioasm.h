@@ -55,6 +55,7 @@ typedef struct {
     // registers
     uint32_t instruction_index;
     uint8_t is_running;
+    uint8_t current_instruction;
 
     // transmission registers
     uint32_t write_index;
