@@ -36,6 +36,7 @@ typedef bool (*pin_digital_input_provider_t)(
 );
 
 typedef void (*timer_handler_t)(
+    // void type because undeclared yet
     void *engine_ptr,
     uint64_t timeout,
     bool start
