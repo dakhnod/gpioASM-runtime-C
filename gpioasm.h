@@ -93,6 +93,7 @@ typedef enum {
 
 void gpioasm_start(gpioasm_engine_t *engine);
 void gpioasm_stop(gpioasm_engine_t *engine);
+void gpioasm_reset(gpioasm_engine_t *engine);
 void gpioasm_init(gpioasm_engine_t *engine, gpioasm_engine_init_t *gpioasm_engine_init);
 void gpioasm_step(gpioasm_engine_t *engine);
 uint8_t gpioasm_is_running(gpioasm_engine_t *engine);
