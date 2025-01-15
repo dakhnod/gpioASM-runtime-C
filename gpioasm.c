@@ -257,7 +257,7 @@ void gpioasm_execute_instruction_sleep_match_timeout(gpioasm_engine_t *engine, b
     engine->init.timer_handler(engine, timeout, true);
 }
 
-void gpioasm_handle_digital_input_update(gpioasm_engine_t *engine, uint32_t index, bool is_high) {
+void gpioasm_handle_digital_input_update(gpioasm_engine_t *engine) {
     if(!(engine->is_running)){
         return;
     }
