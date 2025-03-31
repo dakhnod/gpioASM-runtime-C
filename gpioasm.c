@@ -20,7 +20,7 @@ void gpioasm_reset(gpioasm_engine_t *engine) {
     engine->packet_index = 0;
 }
 
-GPIOASM_PACKET_PUSH_RESULT gpioasm_push_packet(gpioasm_engine_t *engine, uint8_t *data, uint32_t length) {
+GPIOASM_PACKET_PUSH_RESULT gpioasm_push_packet(gpioasm_engine_t *engine, const uint8_t *data, uint32_t length) {
     uint8_t sequence_number = data[0] & 0b01111111;
 
     GPIOASM_PACKET_PUSH_RESULT result = PUSH_SUCCESS;
@@ -40,7 +40,7 @@ GPIOASM_PACKET_PUSH_RESULT gpioasm_push_packet(gpioasm_engine_t *engine, uint8_t
     engine->packet_index = sequence_number;
 
     uint32_t payload_length = length - 1;
-    uint8_t *payload = data + 1;
+    const uint8_t *payload = data + 1;
 
     if ((engine->write_index + payload_length) > GPIOASM_BUFFER_SIZE) {
         return PUSH_OVERFLOW;

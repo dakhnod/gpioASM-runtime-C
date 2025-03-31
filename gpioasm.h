@@ -97,7 +97,7 @@ void gpioasm_reset(gpioasm_engine_t *engine);
 void gpioasm_init(gpioasm_engine_t *engine, gpioasm_engine_init_t *gpioasm_engine_init);
 void gpioasm_step(gpioasm_engine_t *engine);
 uint8_t gpioasm_is_running(gpioasm_engine_t *engine);
-GPIOASM_PACKET_PUSH_RESULT gpioasm_push_packet(gpioasm_engine_t *engine, uint8_t *data, uint32_t length);
+GPIOASM_PACKET_PUSH_RESULT gpioasm_push_packet(gpioasm_engine_t *engine, const uint8_t *data, uint32_t length);
 void gpioasm_handle_digital_input_update(gpioasm_engine_t *engine);
 void gpioasm_handle_timer_timeout(gpioasm_engine_t *engine);
 
